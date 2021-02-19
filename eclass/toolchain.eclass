@@ -877,7 +877,7 @@ toolchain_src_configure() {
 		case ${CTARGET} in
 		*-linux)		 needed_libc=error-unknown-libc;;
 		*-dietlibc)		 needed_libc=dietlibc;;
-		*-elf|*-eabi)
+		*-elf|*-eabi|*-eabihf)
 			needed_libc=newlib
 			# Bare-metal targets don't have access to clock_gettime()
 			# arm-none-eabi example: bug #589672
@@ -965,7 +965,7 @@ toolchain_src_configure() {
 			confgcc+=( --enable-clocale=uclibc )
 		fi
 		;;
-	*-elf|*-eabi)
+	*-elf|*-eabi|*-eabihf)
 		confgcc+=( --with-newlib )
 		;;
 	*-musl*)
